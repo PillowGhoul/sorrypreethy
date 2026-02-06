@@ -83,6 +83,29 @@
         span.className = 'word visible';
         span.textContent = games[gameIndex][wordIndex];
         wordsDiv.appendChild(span);
+
+        wordIndex++;
+
+        // move to next mini-game after 3 words
+        if (wordIndex >= games[gameIndex].length) {
+          gameIndex++;
+          wordIndex = 0;
+          wordsDiv.innerHTML = '';
+
+          if (gameIndex < games.length) {
+            instruction.textContent = `Game ${gameIndex + 1}: Tap the heart 💕`;
+          } else {
+            instruction.textContent = 'One last thing…';
+            btn.textContent = '🥺';
+          }
+        }
+      } else {
+        finale();
+      }
+    });
+        span.className = 'word visible';
+        span.textContent = games[gameIndex][wordIndex];
+        wordsDiv.appendChild(span);
         wordIndex++;
 
         if (wordIndex === games[gameIndex].length) {
@@ -132,3 +155,4 @@
   </script>
 </body>
 </html>
+
